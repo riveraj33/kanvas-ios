@@ -43,7 +43,7 @@ final class KanvasMediaPickerViewController: UIViewController, MediaPicker {
         picker.delegate = self
         picker.sourceType = .photoLibrary
         picker.allowsEditing = false
-        picker.mediaTypes = [kUTTypeMovie as String, kUTTypeImage as String]
+        picker.mediaTypes = settings.mediaTypes
         return picker
     }()
 

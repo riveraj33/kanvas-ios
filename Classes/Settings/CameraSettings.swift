@@ -6,6 +6,7 @@
 
 import AVFoundation
 import Foundation
+import MobileCoreServices
 
 /// Camera Modes available
 ///
@@ -181,6 +182,7 @@ public struct CameraFeatures {
 // A class that defines the settings for the Kanvas Camera
 @objc public final class CameraSettings: NSObject {
 
+    open var mediaTypes: [String] = [kUTTypeMovie as String, kUTTypeImage as String]
     // MARK: - Modes
     /**
      Enables/disables modes.

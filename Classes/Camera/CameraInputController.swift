@@ -224,6 +224,7 @@ final class CameraInputController: UIViewController, CameraRecordingDelegate, AV
         sessionQueue.async { [weak self] in
             self?.createCaptureSession()
             self?.configureSession()
+            self?.startAudioSession()
             if let self = self {
                 self.setupRecorder(self.recorderType, frameSize: frameSize, segmentsHandler: self.segmentsHandler)
             }

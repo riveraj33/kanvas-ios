@@ -146,6 +146,9 @@ public protocol CameraControllerDelegate: class {
     ///
     /// - Returns: the blog switcher.
     func getBlogSwitcher() -> UIView
+    
+    func didStartPressingCapture()
+    func didEndPressingCapture()
 }
 
 // A controller that contains and layouts all camera handling views and controllers (mode selector, input, etc).
@@ -701,6 +704,7 @@ open class CameraController: UIViewController, MediaClipsEditorDelegate, CameraP
     }
 
     func didStartPressingForMode(_ mode: CameraMode) {
+        delegate?.didStartPressingCapture()
         switch mode.group {
         case .gif:
             takeGif(numberOfFrames: KanvasTimes.gifHoldNumberOfFrames, framesPerSecond: KanvasTimes.gifPreferredFramesPerSecond)
@@ -716,6 +720,7 @@ open class CameraController: UIViewController, MediaClipsEditorDelegate, CameraP
     }
 
     func didEndPressingForMode(_ mode: CameraMode) {
+        delegate?.didEndPressingCapture()
         switch mode.group {
         case .video:
             cameraInputController.endRecording(completion: { [weak self] url in
